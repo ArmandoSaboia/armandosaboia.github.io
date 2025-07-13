@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# Armando Saboia - Personal Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to my personal portfolio, showcasing my work as a Data Scientist/Engineer and Freelance Consultant.
 
-## Available Scripts
+## About Me
 
-In the project directory, you can run:
+I'm a Data Scientist with a BSc degree in data science, machine learning, and data analysis. I thrive on tackling challenging problems and have a proven track record of developing data-driven solutions that provide significant business value.
 
-### `npm start`
+My expertise lies in the full data science lifecycle: from data collection and preprocessing to model development, deployment, and monitoring. I'm proficient with Python and its data science ecosystem (Pandas, NumPy, Scikit-learn, PyTorch), and experienced in deploying models using tools like Streamlit and Docker.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Responsive Design**: Built with React and Tailwind CSS for a seamless experience across devices.
+- **Dynamic Project Listing**: Fetches and displays my latest projects from GitHub (with a fallback to hardcoded data).
+- **Contact Information**: Easy access to my GitHub, LinkedIn, and email.
+- **Skills Section**: Highlights my core technical skills.
 
-### `npm test`
+## Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React.js
+- Tailwind CSS
+- Lucide React (for icons)
+- GitHub API
 
-### `npm run build`
+## Setup and Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run this project locally, follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/ArmandoSaboia/armandosaboia.github.io.git
+    cd armando-portfolio
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-### `npm run eject`
+3.  **Start the development server:**
+    ```bash
+    npm start
+    ```
+    This will open the application in your browser at `http://localhost:3000`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Important Note on Building the Project
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+During the development of this project, a persistent issue was encountered with the `npm run build` command related to Tailwind CSS and PostCSS configuration within the `create-react-app` environment. The error message consistently indicated:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+Error: It looks like you're trying to use `tailwindcss` directly as a PostCSS plugin. The PostCSS plugin has moved to a separate package, so to continue using Tailwind CSS with PostCSS you'll need to install `@tailwindcss/postcss` and update your PostCSS configuration.
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Despite attempts to resolve this by installing `@tailwindcss/postcss`, adjusting `postcss.config.js` in various ways, and reinstalling dependencies, the build issue remains. This suggests a potential incompatibility between the specific versions of `tailwindcss` (v4 initially, then v3), `postcss`, `autoprefixer`, and `react-scripts` (used by `create-react-app`), or an environmental factor.
 
-## Learn More
+**If you encounter this build error, here are some potential troubleshooting steps:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-   **Verify Tailwind CSS and PostCSS versions:** Ensure compatibility between `tailwindcss`, `postcss`, `autoprefixer`, and `react-scripts`. You might need to experiment with different version combinations.
+-   **Consult `create-react-app` and Tailwind CSS documentation:** Refer to the official documentation for the latest recommended setup for integrating Tailwind CSS with `create-react-app`.
+-   **Clear npm cache and reinstall:** Sometimes, a fresh installation can resolve dependency conflicts:
+    ```bash
+    npm cache clean --force
+    rm -rf node_modules package-lock.json
+    npm install
+    ```
+-   **Consider alternative build tools:** If the issue persists, you might consider ejecting from `create-react-app` (use `npm run eject` - **this is irreversible!**) to gain full control over the Webpack configuration, or migrating to a different build tool like Vite or Next.js, which often have more straightforward Tailwind CSS integration.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project Structure
 
-### Code Splitting
+```
+armando-portfolio/
+├── public/
+│   ├── assets/             # Place your profile image (e.g., profile.jpg) here
+│   └── ...
+├── src/
+│   ├── App.js              # Main React component
+│   ├── index.css           # Tailwind CSS imports
+│   └── ...
+├── package.json
+├── tailwind.config.js
+├── postcss.config.js
+└── README.md
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Customization
 
-### Analyzing the Bundle Size
+-   **Profile Image**: Place your profile image (e.g., `profile.jpg`) in the `public/assets/` directory. The `src/App.js` file is configured to look for `/assets/profile.jpg`.
+-   **Projects**: Update the `fallbackProjects` array in `src/App.js` with your actual project details (name, GitHub URL, description).
+-   **Contact Information**: Modify the links in the `Header` and `Hero Section` in `src/App.js` to your GitHub, LinkedIn, and email.
+-   **About Me & Skills**: Edit the content in the `About Me Section` in `src/App.js` to reflect your experience and skills.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## License
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is open source and available under the [MIT License](LICENSE).
